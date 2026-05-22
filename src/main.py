@@ -1,10 +1,12 @@
-from sensor import sensor
+from sensor import VoltageSensor, TemperatureSensor
 
 def main():
 
-    TestSensor: sensor = sensor()
+    t: TemperatureSensor = TemperatureSensor(75, 70)
+    v: VoltageSensor = VoltageSensor(15, 12)
 
-    TestSensor.turn_on()
-    TestSensor.run()
+    v.turn_on()
+    t.turn_on()
+
 
 main()
