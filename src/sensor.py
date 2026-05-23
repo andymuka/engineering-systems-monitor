@@ -10,6 +10,7 @@ class sensor(ABC):
         self.name = name
         self.max = max
         self.min = min
+        self.history = []
 
     @abstractmethod
     def turn_on(self) -> None:    
@@ -28,7 +29,6 @@ class VoltageSensor(sensor):
 
     def __init__(self, max, min):
         super().__init__("Test Voltage Sensor", max, min)
-        self.turned_on = False
 
     def turn_on(self) -> None:
         if self.turned_on: 
@@ -48,6 +48,7 @@ class VoltageSensor(sensor):
         if self.turned_on:
             while self.turned_on: 
                 self.value = round(random.uniform(self.max, self.min), 2)
+                self.history.append(self.value)
                 print(f'Voltage: {self.value}')
                 time.sleep(1)
         else: 
@@ -57,7 +58,6 @@ class TemperatureSensor(sensor):
 
     def __init__(self, max, min):
         super().__init__("Test Temperature Sensor", max, min)
-        self.turned_on = False
 
 
     def turn_on(self) -> None:
@@ -78,6 +78,7 @@ class TemperatureSensor(sensor):
         if self.turned_on:
             while self.turn_on: 
                 self.value = round(random.uniform(self.max, self.min), 2)
+                self.history.append(self.value)
                 print(f'Temperature: {self.value}')
                 time.sleep(1)
         else: 
