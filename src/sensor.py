@@ -16,7 +16,7 @@ class sensor(ABC):
         pass
 
     @abstractmethod
-    def turn_on(self) -> None:    
+    def turn_off(self) -> None:    
         pass
 
     @abstractmethod
