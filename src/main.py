@@ -6,7 +6,5 @@ def main():
     v: VoltageSensor = VoltageSensor(15, 12)
 
     v.turn_on()
-    t.turn_on()
-
-
+    v.run()
 main()

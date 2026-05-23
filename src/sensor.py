@@ -16,6 +16,10 @@ class sensor(ABC):
         pass
 
     @abstractmethod
+    def turn_on(self) -> None:    
+        pass
+
+    @abstractmethod
     def run(self) -> None: 
         pass
 
@@ -33,14 +37,21 @@ class VoltageSensor(sensor):
             self.turned_on = True
             print(f'{self.name} is now on. ')
 
+    def turn_off(self) -> None:
+        if self.turned_on: 
+            self.turned_on = False
+            print(f'{self.name} is now off')
+        else: 
+            print(f'{self.name} is already off. ')
+
     def run(self) -> None: 
-        while self.turned_on:
-            if self.turned_on: 
+        if self.turned_on:
+            while self.turned_on: 
                 self.value = round(random.uniform(self.max, self.min), 2)
                 print(f'Voltage: {self.value}')
                 time.sleep(1)
-            else: 
-                print(f'{self.name} is not turned on. ')
+        else: 
+            print(f'{self.name} is not turned on. ')
 
 class TemperatureSensor(sensor): 
 
@@ -56,12 +67,19 @@ class TemperatureSensor(sensor):
             self.turned_on = True
             print(f'{self.name} is now on. ')
 
+    def turn_off(self) -> None:
+        if self.turned_on: 
+            self.turned_on = False
+            print(f'{self.name} is now off')
+        else: 
+            print(f'{self.name} is already off. ')
+
     def run(self) -> None: 
-        while self.turned_on:
-            if self.turned_on: 
+        if self.turned_on:
+            while self.turn_on: 
                 self.value = round(random.uniform(self.max, self.min), 2)
                 print(f'Temperature: {self.value}')
                 time.sleep(1)
-            else: 
-                print(f'{self.name} is not turned on. ')
+        else: 
+            print(f'{self.name} is not turned on. ')
 
